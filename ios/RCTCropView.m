@@ -41,7 +41,7 @@
             UIImage * image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:sourceUrl]]];
             _inlineCropView = [[TOCropView alloc] initWithImage:image];
         }
-        _inlineCropView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _inlineCropView.autoresizingMask = cropAspectRatio.width | cropAspectRatio.width;
         _inlineCropView.frame = self.bounds;
         if (self->keepAspectRatio) {
             _inlineCropView.aspectRatioLockEnabled = keepAspectRatio;
