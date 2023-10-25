@@ -36,12 +36,16 @@
                             resultHandler:^void(UIImage *image, NSDictionary *info) {
                 blockImage = image;
             }];
-            _inlineCropView = [[TOCropView alloc] initWithImage:blockImage];
+            _inlineCropView = [[TOCropView alloc] initWithCroppingStyle:TOCropViewCroppingStyleCircular image:blockImage];
+             cropViewController.delegate = self;
+            [self presentViewController:cropViewController animated:YES completion:nil];
         } else {
             UIImage * image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:sourceUrl]]];
-            _inlineCropView = [[TOCropView alloc] initWithImage:image];
+            _inlineCropView = [[TOCropView alloc] initWithCroppingStyle:TOCropViewCroppingStyleCircular image:blockImage];
+            cropViewController.delegate = self;
+            [self presentViewController:cropViewController animated:YES completion:nil];
         }
-        _inlineCropView.autoresizingMask = cropAspectRatio.width | cropAspectRatio.width;
+     
         _inlineCropView.frame = self.bounds;
         if (self->keepAspectRatio) {
             _inlineCropView.aspectRatioLockEnabled = keepAspectRatio;
