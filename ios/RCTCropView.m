@@ -60,7 +60,7 @@
 }
 
 - (UIImage *)getCroppedImage {
-    return [cropViewController:(TOCropViewController *)cropViewController didCropToCircularImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle];
+    return [_inlineCropView.image croppedImageWithFrame:_inlineCropView.imageCropFrame angle:_inlineCropView.angle circularClip:YES];
 }
 
 - (CGRect)getCropFrame {
